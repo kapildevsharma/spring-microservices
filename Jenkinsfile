@@ -5,14 +5,14 @@ pipeline {
             steps {
 				
 				powershell label: 'Maven build', script: '''
-					call cd service-registry
-					call mvn clean package
-					call cd ../cloud-gateway
-					call mvn clean package
-					call cd ../user-service
-					call mvn clean package
-					call cd ../department-service
-					call mvn clean package
+					cd service-registry
+					mvn clean package
+					cd ../cloud-gateway
+					mvn clean package
+					cd ../user-service
+					mvn clean package
+					cd ../department-service
+					mvn clean package
 				'''
 				
                 
