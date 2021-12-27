@@ -14,9 +14,6 @@ pipeline {
 					cd ../department-service
 					mvn clean package
 				'''
-				
-                
-                
             }
         }
      }

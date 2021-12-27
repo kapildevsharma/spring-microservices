@@ -19,6 +19,7 @@ cd ../department-service
 mvn clean package
 
 
-Before Starting the above micorservice, we start the ZIPKIN Server by the following command
-java -jar zipkin-server-2.23.14-exec.jar
+Before Starting the above micorservice, we start the ZIPKIN Server by using the below command
+	java -jar zipkin-server-2.23.14-exec.jar
+
 
