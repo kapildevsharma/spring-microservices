@@ -1,11 +1,7 @@
 # spring-microservices
 
-Start application in the following as well as 
-
-1. Service registry
-2. Cloud API Gateway
-3. User Service
-4. Department Service
+Starting the ZIPKIN Server before the any micorservice by using the below command
+	java -jar zipkin-server-2.23.14-exec.jar
 
 Open the project and run the following commands as well as 
 
@@ -19,7 +15,16 @@ cd ../department-service
 mvn clean package
 
 
-Before Starting the above micorservice, we start the ZIPKIN Server by using the below command
-	java -jar zipkin-server-2.23.14-exec.jar
+Start application in the following as well as 
+1. Service registry
+2. Cloud API Gateway
+3. User Service
+4. Department Service
+
+After running applciation,
+Spring Eureka Service URL: http://localhost:8761/ 
+API Gateway URL: http://localhost:9191/actuator
+User URL: http://localhost:9002/users/1
+Department URL : http://localhost:9001/departments/
 
 
