@@ -5,13 +5,13 @@ Starting the ZIPKIN Server before the any micorservice by using the below comman
 
 Open the project and run the following commands as well as 
 
-cd service-registry
+1. cd service-registry
 mvn clean package 
-cd ../cloud-gateway
+2. cd ../cloud-gateway
 mvn clean package 
-cd ../user-service
+3. cd ../user-service
 mvn clean package
-cd ../department-service
+4. cd ../department-service
 mvn clean package
 
 
@@ -22,7 +22,7 @@ Start application in the following as well as
 4. Department Service
 
 After running applciation,
-Spring Eureka Service URL: http://localhost:8761/ 
+Spring Eureka Service URL: http://localhost:8761/
 API Gateway URL: http://localhost:9191/actuator
 User URL: http://localhost:9002/users/1
 Department URL : http://localhost:9001/departments/
