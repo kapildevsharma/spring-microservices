@@ -1,5 +1,7 @@
 package com.kapil.department.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +26,10 @@ public class DepartmentService {
     public Department findDepartmentById(Long departmentId) {
         log.info("Inside saveDepartment of DepartmentService");
         return departmentRepository.findByDepartmentId(departmentId);
+    }
+    
+    public List<Department> getDepartmentList() {
+        log.info("Inside saveDepartment of DepartmentService");
+        return departmentRepository.findAll();
     }
 }

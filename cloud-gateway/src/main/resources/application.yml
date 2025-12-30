@@ -15,7 +15,17 @@ spring:
           uri: lb://DEPARTMENT-SERVICE
           predicates:
             - Path=/departments/**
-   
+
+#			for diffrent tendent server 
+#			routes:
+#			  - id: user-service-dev1
+#			    uri: lb://USER-SERVICE
+#			    predicates:
+#			      - Header=Environment, dev1
+#			  - id: user-service-dev2
+#			    uri: lb://USER-SERVICE
+#			    predicates:
+#			      - Header=Environment, dev2
 eureka:
   client:
     register-with-eureka: true
