@@ -1,5 +1,7 @@
 package com.kapil.department.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +25,22 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/")
+    @PostMapping("/save")
     public Department saveDepartment(@RequestBody Department department) {
         log.info("Inside saveDepartment method of DepartmentController");
         return  departmentService.saveDepartment(department);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Department findDepartmentById(@PathVariable("id") Long departmentId) {
         log.info("Inside findDepartmentById method of DepartmentController");
         return departmentService.findDepartmentById(departmentId);
+    }
+    
+    @GetMapping("/")
+    public List<Department> getDepartmentlist() {
+        log.info("Inside all Departments of DepartmentController");
+        return departmentService.getDepartmentList();
     }
 
 }
