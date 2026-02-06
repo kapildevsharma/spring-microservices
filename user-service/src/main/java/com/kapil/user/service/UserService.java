@@ -33,9 +33,13 @@ public class UserService {
 		User user = userRepository.findByUserId(userId);
 
 		// after register eureka server
-		Department department = restTemplate
-				.getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(), Department.class);
-
+        Department department = null;
+        try {
+            department = restTemplate.getForObject("http://API-GATEWAY/departments/id/" + user.getDepartmentId(), Department.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Error occurred while calling Department Service: " + e.getMessage());
+        }
 		/*
 		 * Department department =
 		 * restTemplate.getForObject("http://localhost:9001/departments/" +

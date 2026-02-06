@@ -11,6 +11,10 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
+        - id: USER-SWAGGER
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/v3/api-docs/**,/swagger-ui.html**
         - id: DEPARTMENT-SERVICE
           uri: lb://DEPARTMENT-SERVICE
           predicates:
@@ -34,3 +38,4 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: localhost
+    prefer-ip-address: true   # ensures proper registration
