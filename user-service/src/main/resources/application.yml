@@ -17,6 +17,11 @@ spring:
   zipkin:
     base-url: http://127.0.0.1:9411/
 
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
 eureka:
   client:
     register-with-eureka: true

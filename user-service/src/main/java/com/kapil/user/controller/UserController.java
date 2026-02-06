@@ -1,5 +1,7 @@
 package com.kapil.user.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import com.kapil.user.entity.User;
 import com.kapil.user.service.UserService;
 
 @RestController
+@Tag(name = "User APIs", description = "Operations related to User Management")
 @RequestMapping("/users")
 public class UserController {
 
@@ -25,13 +28,15 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/")
+    @Operation(summary = "Save User", description = "Create a new user in the system")
+
     public User saveUser(@RequestBody User user) {
         log.info("Inside saveUser of UserController");
         return userService.saveUser(user);
     }
 
     @GetMapping("/{id}")
-  //  @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+    @Operation(summary = "Get User by user id" , description = "Get user details along with department information by user id")
     public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userId) {
         log.info("Inside getUserWithDepartment of UserController");
         return userService.getUserWithDepartment(userId);

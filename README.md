@@ -27,4 +27,8 @@ After running applciation, here are following url to verify all applications
 3. User URL: http://localhost:9002/users/1
 4. Department URL : http://localhost:9001/actuator/  http://localhost:9001/departments/  
 
+Open the swagger URL to verify the API documentation
+1. User Service Swagger URL: http://localhost:9002/swagger-ui/index.html
+2. Department Service Swagger URL: http://localhost:9001/swagger-ui/index.html
+3. API Gateway Swagger URL: http://localhost:9191/swagger-ui/index.html
 
