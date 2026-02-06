@@ -21,7 +21,7 @@ Start application in the following as well as
 3. User Service
 4. Department Service
 
-After running applciation, here are following url to verify all applications
+After running application, here are following url to verify all applications
 1. Spring Eureka Service URL: http://localhost:8761/
 2. API Gateway URL: http://localhost:9191/actuator
 3. User URL: http://localhost:9002/users/1
