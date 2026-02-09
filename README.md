@@ -10,15 +10,15 @@ of the config-server project (https://github.com/kapildevsharma/config-server.gi
 Open the project and run the following commands as well as 
 
 1. cd service-registry
-mvn clean package 
+   mvn clean package 
 2. cd ../config-server
-mvn clean package
+   mvn clean package
 3. cd ../cloud-gateway
-mvn clean package 
+   mvn clean package 
 4. cd ../department-service
-mvn clean package
+   mvn clean package
 5. cd ../user-service
-mvn clean package
+   mvn clean package
 
 
 Start application in the following as well as 
