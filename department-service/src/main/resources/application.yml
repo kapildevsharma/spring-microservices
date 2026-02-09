@@ -1,32 +1,12 @@
 server:
   port: 9001
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info  # Expose only health and info endpoints
-  endpoint:
-    info:
-      enabled: true  # Make sure /actuator/info is enabled
 
 spring:
   application:
     name: DEPARTMENT-SERVICE
+  cloud:
+    config:
+      uri: http://localhost:9003
   zipkin:
     base-url: http://127.0.0.1:9411/
 
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: localhost
-    prefer-ip-address: true   # ensures proper registration

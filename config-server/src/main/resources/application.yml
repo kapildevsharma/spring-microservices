@@ -1,5 +1,5 @@
 server:
-  port: 9296
+  port: 9003
 
 spring:
   application:
@@ -8,5 +8,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/kapildevsharma/spring-microservices/config-server.git
+          uri: https://github.com/kapildevsharma/config-server.git
           clone-on-start: true
