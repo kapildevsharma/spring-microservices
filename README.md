@@ -32,3 +32,31 @@ Open the swagger URL to verify the API documentation
 2. Department Service Swagger URL: http://localhost:9001/swagger-ui/index.html
 3. API Gateway Swagger URL: http://localhost:9191/swagger-ui/index.html
 
+
+
+How to insert data in the database for Using Swagger UI
+Department Service
+    1. Open the swagger URL for the department service
+    http://localhost:9191/webjars/swagger-ui/index.html?urls.primaryName=department-service
+
+   2. Click on the POST method and click on the try it out button and insert the below JSON data and hit the execute button
+   {
+   "departmentName": "IT",
+   "departmentAddress": "Noida",
+   "departmentCode": "IT-06"
+   }
+
+User Service
+   1. Open the swagger URL for the user service
+     http://localhost:9191/webjars/swagger-ui/index.html?urls.primaryName=user-service
+
+   2. Click on the POST method and click on the try it out button and insert the below JSON data and hit the execute button
+   {
+   "firstName":"KDS QW",
+   "lastName":"Test QW",
+   "email":"test@test.com",
+   "departmentId":2
+   }
+
+
+

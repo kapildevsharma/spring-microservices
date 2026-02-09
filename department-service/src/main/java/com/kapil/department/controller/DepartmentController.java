@@ -28,14 +28,14 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/save")
+    @PostMapping("/")
     @Operation(summary = "Save Department", description = "Create a new department in the system")
     public Department saveDepartment(@RequestBody Department department) {
         log.info("Inside saveDepartment method of DepartmentController");
         return  departmentService.saveDepartment(department);
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     @Operation(summary = "Get Department by department id" , description = "Get department details by department id")
     public Department findDepartmentById(@PathVariable("id") Long departmentId) {
         log.info("Inside findDepartmentById method of DepartmentController");
