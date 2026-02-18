@@ -5,12 +5,12 @@ spring:
   application:
     name: USER-SERVICE
   cloud:
-    config:
-      enabled: true
-      config:
-        uri: http://localhost:9003/configserver
-  #config:
-  #  import: "optional:configserver:http://localhost:9003"
+   # config:
+   #   enabled: true
+    #  config:
+   #     uri: http://localhost:9003/configserver
+  config:
+    import: "optional:configserver:http://localhost:9003"
   zipkin:
     base-url: http://127.0.0.1:9411/
 
