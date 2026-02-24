@@ -1,5 +1,7 @@
 package com.kapil.user.service;
 
+import com.kapil.user.exception.ResourceNotFoundException;
+import com.kapil.user.exception.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +32,8 @@ public class UserService {
 	public ResponseTemplateVO getUserWithDepartment(Long userId) {
 		log.info("Inside getUserWithDepartment of UserService");
 		ResponseTemplateVO vo = new ResponseTemplateVO();
-		User user = userRepository.findByUserId(userId);
-
+        User user =userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found: "+userId));
 		// after register eureka server
         Department department = null;
         try {
@@ -39,6 +41,9 @@ public class UserService {
         } catch (Exception e) {
             e.printStackTrace();
             log.error("Error occurred while calling Department Service: " + e.getMessage());
+        }
+        if (department == null) {
+            throw new ResourceNotFoundException("Department not found with id: " + department.getDepartmentId());
         }
 		/*
 		 * Department department =
