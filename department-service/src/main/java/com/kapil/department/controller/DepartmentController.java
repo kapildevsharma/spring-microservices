@@ -7,12 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.kapil.department.entity.Department;
 import com.kapil.department.service.DepartmentService;
@@ -48,5 +43,13 @@ public class DepartmentController {
         log.info("Inside all Departments of DepartmentController");
         return departmentService.getDepartmentList();
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete Department by department id" , description = "Delete department from the system by department id")
+    public String deleteDepartmentById(@PathVariable("id") Long departmentId) {
+            log.info("Inside deleteDepartmentById method of DepartmentController");
+            departmentService.deleteDepartmentById(departmentId);
+            return "Department with id " + departmentId + " deleted successfully.";
+        }
 
 }
