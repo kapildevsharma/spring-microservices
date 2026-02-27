@@ -66,6 +66,15 @@ User Service
    "departmentId":2
    }
 
+Using Java Flight Recorder (JFR)
+    Start recording at JVM startup
+        java -XX:StartFlightRecording=duration=5m,filename=recording.jfr -jar user-service-1.0.0.jar
+    
+    If Application is already running, you can use the below commands to start and stop the recording
+        Step 1: Start Recording
+            jcmd <PID> JFR.start name=UserServiceRecording duration=5m filename=user-service.jfr
+        Step 2: Stop Recording (if no duration set)
+            jcmd <PID> JFR.stop name=UserServiceRecording
 
 For more details, please refer to the below video link
 https://www.youtube.com/watch?v=9n2s8Xo7l5c

@@ -31,7 +31,7 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-    @GetMapping()
+    @GetMapping("")
     @Operation(summary = "Get Users" , description = "Get user details along with department information")
     public List<ResponseTemplateVO> getUserListWithDepartment() {
         log.info("Inside getUsers of UserController");
