@@ -1,4 +1,4 @@
-package com.kapil.department.config.config;
+package com.kapil.department.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
