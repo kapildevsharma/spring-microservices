@@ -42,7 +42,8 @@ public class UserController {
     @Operation(summary = "Get User by user id" , description = "Get user details along with department information by user id")
     public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userId) {
         log.info("Inside getUserWithDepartment of UserController");
-        return userService.getUserWithDepartment(userId);
+        return userService.getUserWithDepartmentWithFeignClient(userId);
+      //  return userService.getUserWithDepartment(userId);
     }
 
     @DeleteMapping("/{id}")

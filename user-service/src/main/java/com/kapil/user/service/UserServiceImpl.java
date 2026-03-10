@@ -2,6 +2,7 @@ package com.kapil.user.service;
 
 import com.kapil.user.VO.Department;
 import com.kapil.user.VO.ResponseTemplateVO;
+import com.kapil.user.client.DepartmentClient;
 import com.kapil.user.entity.User;
 import com.kapil.user.exception.ResourceNotFoundException;
 import com.kapil.user.exception.UserNotFoundException;
@@ -25,6 +26,8 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private DepartmentClient departmentClient;
 
     public User saveUser(User user) {
         log.info("Inside saveUser of UserService");
@@ -57,7 +60,28 @@ public class UserServiceImpl implements UserService{
 
         return vo;
     }
+    public ResponseTemplateVO getUserWithDepartmentWithFeignClient(Long userId) {
+        log.info("Inside getUserWithDepartment of UserService");
+        ResponseTemplateVO vo = new ResponseTemplateVO();
+        User user =userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found: "+userId));
+        // after register eureka server
+        Department department = null;
+        try {
+            department = departmentClient.getDepartmentById(user.getDepartmentId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Error occurred while calling Department Service: {}" ,e.getMessage());
+        }
+        if (department == null) {
+            throw new ResourceNotFoundException("Department not found with id: " + user.getDepartmentId());
+        }
 
+        vo.setUser(user);
+        vo.setDepartment(department);
+
+        return vo;
+    }
     public void deleteUser(Long userId) {
         log.info("Inside deleteUser of UserService");
         User user = userRepository.findById(userId)
