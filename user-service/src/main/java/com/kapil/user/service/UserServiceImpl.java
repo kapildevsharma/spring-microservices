@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService{
         return vo;
     }
     public ResponseTemplateVO getUserWithDepartmentWithFeignClient(Long userId) {
-        log.info("Inside getUserWithDepartment of UserService");
+        log.info("Inside getUserWithDepartmentWithFeignClient of UserService");
         ResponseTemplateVO vo = new ResponseTemplateVO();
         User user =userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found: "+userId));
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService{
             department = departmentClient.getDepartmentById(user.getDepartmentId());
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("Error occurred while calling Department Service: {}" ,e.getMessage());
+            log.error("Error occurred while calling Department Service in getUserWithDepartmentWithFeignClient: {}" ,e.getMessage());
         }
         if (department == null) {
             throw new ResourceNotFoundException("Department not found with id: " + user.getDepartmentId());
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService{
                         +     user.getDepartmentId(), Department.class);
             } catch (Exception e) {
                 e.printStackTrace();
-                log.error("Error occurred while calling Department Service {}", e.getMessage());
+                log.error("Error occurred while calling Department Service in getUserList {}", e.getMessage());
             }
             if (department == null) {
                 log.warn("Department not found for user id: {}", user.getUserId());
