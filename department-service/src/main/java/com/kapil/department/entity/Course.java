@@ -12,6 +12,13 @@ import lombok.Setter;
 
 //ManytoMany annotation  with Student and Course class
 // course table --> id | name
+
+/*CREATE TABLE course (
+        id INT PRIMARY KEY,
+        name VARCHAR(100)
+);*/
+
+
 @Entity
 @Table(name = "course")
 @NoArgsConstructor
@@ -26,10 +33,10 @@ public class Course {
 
     @Column(name = "name")
     private String name;
-    // ✅ Many-to-Many inverse side
+    // Many-to-Many inverse side
     @ManyToMany(mappedBy = "courses", cascade =  {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private Set<Student> students = new HashSet<>();;
-    // ✅ One-to-Many for mainCourse relationship
+    // One-to-Many for mainCourse relationship
     @OneToMany(mappedBy = "mainCourse", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Student> mainStudents = new HashSet<>();
 
