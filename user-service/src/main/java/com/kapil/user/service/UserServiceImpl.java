@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService{
             log.error("Error occurred while calling Department Service: {}" ,e.getMessage());
         }
         if (department == null) {
-            throw new ResourceNotFoundException("Department not found with id: " + department.getDepartmentId());
+            throw new ResourceNotFoundException("Department not found with id: " + user.getDepartmentId());
         }
         /*
          * Department department =
