@@ -1,0 +1,20 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: USER-SERVICE
+  cloud:
+  # config:
+  #   enabled: true
+  #  config:
+  #     uri: http://localhost:9003/configserver
+  config:
+    import: "optional:configserver:http://localhost:9003"
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
