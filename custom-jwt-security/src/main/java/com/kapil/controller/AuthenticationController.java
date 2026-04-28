@@ -1,4 +1,5 @@
 package com.kapil.controller;
+
 import com.kapil.dto.AuthenticationRequest;
 import com.kapil.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 @RestController
 public class AuthenticationController {
     @Autowired
@@ -23,6 +26,7 @@ public class AuthenticationController {
     private JwtUtil jwtUtil;
     @Autowired
     private UserDetailsService userDetailsService;
+
     @PostMapping("/authenticate")
     public ResponseEntity<?> createToken(@RequestBody AuthenticationRequest request) throws Exception {
         try {
