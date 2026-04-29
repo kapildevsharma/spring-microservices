@@ -47,27 +47,26 @@ http://localhost:9191/swagger-ui.html
 
 How to insert data in the database for Using Swagger UI
 Department Service
-    1. Open the swagger URL for the department service
-    http://localhost:9191/webjars/swagger-ui/index.html?urls.primaryName=department-service
-
+   1. Open the swagger URL for the department service
+      http://localhost:9191/webjars/swagger-ui/index.html?urls.primaryName=department-service
    2. Click on the POST method and click on the try it out button and insert the below JSON data and hit the execute button
-   {
-   "departmentName": "IT",
-   "departmentAddress": "Noida",
-   "departmentCode": "IT-06"
-   }
+    {
+       "departmentName": "IT",
+       "departmentAddress": "Noida",
+       "departmentCode": "IT-06"
+    }
 
 User Service
    1. Open the swagger URL for the user service
      http://localhost:9191/webjars/swagger-ui/index.html?urls.primaryName=user-service
 
    2. Click on the POST method and click on the try it out button and insert the below JSON data and hit the execute button
-   {
-   "firstName":"KDS QW",
-   "lastName":"Test QW",
-   "email":"test@test.com",
-   "departmentId":2
-   }
+    {
+       "firstName":"KDS QW",
+       "lastName":"Test QW",
+       "email":"test@test.com",
+       "departmentId":2
+    }
 
 Using Java Flight Recorder (JFR)
     Start recording at JVM startup
