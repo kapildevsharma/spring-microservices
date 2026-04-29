@@ -1,6 +1,6 @@
 # spring-microservices
 
-Starting the ZIPKIN Server before the any micorservice by using the below command
+Starting the ZIPKIN Server before any micorservice by using the below command
 	java -jar zipkin-server-2.23.14-exec.jar
 
 For Cloud Configuration Server, we are using GitHub as a remote repository to store the configuration files. 
@@ -11,15 +11,16 @@ Open the project and run the following commands as well as
 
 1. cd service-registry
    mvn clean package 
-2. cd ../config-server
+2. cd ..\config-server\
    mvn clean package
-3. cd ../cloud-gateway
+3. cd ..\cloud-gateway\
    mvn clean package 
-4. cd ../department-service
+4. cd ..\department-service\
    mvn clean package
-5. cd ../user-service
+5. cd ..\user-service\
    mvn clean package
-
+6. cd ..\custom-jwt-security\
+   mvn clean package
 
 Start application in the following as well as 
 1. Service registry
@@ -27,6 +28,7 @@ Start application in the following as well as
 3. Cloud API Gateway
 4. Department Service
 5. User Service
+6. Custom JWT Security
 
 After running application, here are following url to verify all applications
 1. Spring Eureka Service URL: http://localhost:8761/
@@ -34,6 +36,7 @@ After running application, here are following url to verify all applications
 3. API Gateway URL: http://localhost:9191/actuator
 4. Department URL: http://localhost:9001/departments/
 5. User URL: http://localhost:9002/users/1
+6. Custom JWT Security URL: http://localhost:9003/authenticate
 
 Open the swagger URL to verify the API documentation
 http://localhost:9191/swagger-ui.html

@@ -9,6 +9,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,17 +29,24 @@ public class AuthenticationController {
     private UserDetailsService userDetailsService;
 
     @PostMapping("/authenticate")
-    public ResponseEntity<?> createToken(@RequestBody AuthenticationRequest request) throws Exception {
+    public ResponseEntity<?> createToken(@RequestBody AuthenticationRequest request)  {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         } catch (BadCredentialsException e) {
-            throw new Exception("Invalid credentials", e);
+            return ResponseEntity.status(401).body("Invalid credentials");
         }
         UserDetails user = userDetailsService.loadUserByUsername(request.getUsername());
         List<String> roles = user.getAuthorities().stream().map(a -> a.getAuthority()).collect(Collectors.toList());
         String token = jwtUtil.generateToken(user.getUsername(), roles);
         Map<String, String> resp = new HashMap<>();
         resp.put("token", token);
+        resp.put("type", "Bearer");
+        return ResponseEntity.ok(resp);
+    }
+    @GetMapping("/test")
+    public ResponseEntity<?> testEndpoint() {
+        Map<String, String> resp = new HashMap<>();
+        resp.put("message", "CUSTOM-JWT-SECURITY service is running");
         return ResponseEntity.ok(resp);
     }
 }

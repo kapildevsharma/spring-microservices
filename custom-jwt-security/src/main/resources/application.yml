@@ -1,14 +1,10 @@
 server:
-  port: 9002
+  port: 9004
 
 spring:
   application:
-    name: CUSTOM-JWT-SECURITY
+    name: custom-jwt-security
   cloud:
-   # config:
-   #   enabled: true
-    #  config:
-   #     uri: http://localhost:9003/configserver
   config:
     import: "optional:configserver:http://localhost:9003"
   zipkin:
